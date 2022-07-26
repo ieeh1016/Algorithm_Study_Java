@@ -7,11 +7,9 @@ public class Main {
 	public static void main(String[] args) {
 		Scanner scanner = new Scanner(System.in);
 		
-		String a = scanner.next();
-		byte[] bytes = a.getBytes(StandardCharsets.US_ASCII);
-		System.out.print(bytes[0]);
- 
-		
+		int a = scanner.next().charAt(0);
+		System.out.print(a);
+        scanner.close();
 	}
  
 
