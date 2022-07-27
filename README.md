@@ -1,5 +1,5 @@
 # baekjoon-algorithm-study
-java 언어를 이용한 백준 알고리즘 풀이
+java 언어를 이용한 코딩테스트 대비 알고리즘 풀이
 
 ### 1. 입출력과 사칙연산
 1. 2557 - Hello World
