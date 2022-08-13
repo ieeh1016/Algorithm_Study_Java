@@ -6,21 +6,20 @@ import java.util.Arrays;
 public class Main {
 
 	public String solution(String str) {
-		String answer = "NO";
-		str=str.toUpperCase().replaceAll("[^A-Z]", "");
+		String answer = "";
 		
-		String reverseStr = new StringBuilder(str).reverse().toString();
-		if(str.equals(reverseStr)) {
-			answer = "YES";
-		}
+		str = str.toUpperCase().replaceAll("[A-Z]", "");
+
+		str = str.replaceFirst("^0+(?!$)", "");
 		
+		answer = str;
 		return answer;
 	}
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		Main T = new Main(); // T라는 Main의 객체 생성
 		Scanner sc = new Scanner(System.in);
-		String str = sc.nextLine();
+		String str = sc.next();
 		
 		System.out.print(T.solution(str));
 	}
