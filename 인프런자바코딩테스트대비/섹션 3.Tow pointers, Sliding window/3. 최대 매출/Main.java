@@ -4,12 +4,13 @@ class Main {
 	public int solution(int n, int k, int[] arr){
 		
 		int answer = 0;
-		
-		int[] array = new int[n];
 		int sum = 0;
+		
 		for(int i=0; i<k; i++){
 			sum = sum + arr[i];
 		}
+		
+		answer = sum;
 		
 		for(int i=k; i<n; i++) {
 			sum = sum + arr[i] - arr[i-k];
