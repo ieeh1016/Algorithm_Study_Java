@@ -1,33 +1,48 @@
-import java.util.LinkedList;
-import java.util.Queue;
-import java.util.Scanner;
+import java.util.*;
+import java.io.*;
 
-class Main {
-	public String solution(String need, String plan){
-		String answer = "NO";
-		Queue<Character> queue = new LinkedList<>();
-		
-		for(int i=0; i<need.length(); i++) {
-			queue.add(need.charAt(i));
+class Person{
+	int id;
+	int priority;
+	public Person(int id, int priority){
+		this.id=id;
+		this.priority=priority;
+	}
+}
+
+class Main {	
+	public int solution(int n, int m, int[] arr){
+		int answer=0;
+		Queue<Person> Q=new LinkedList<>();
+		for(int i=0; i<n; i++){
+			Q.offer(new Person(i, arr[i]));
 		}
-		for(int i=0; i<plan.length(); i++) {
-			
-			if(queue.peek() != null && plan.charAt(i) == queue.peek()){
-				queue.remove();
+		while(!Q.isEmpty()){
+			Person tmp=Q.poll();
+			for(Person x : Q){
+				if(x.priority>tmp.priority){
+					Q.offer(tmp);
+					tmp=null;
+					break;
+				}
+			}
+			if(tmp!=null){
+				answer++;
+				if(tmp.id==m) return answer;
 			}
 		}
-		if(queue.poll() == null) {
-			answer = "YES";
-		}
-		
 		return answer;
 	}
 
-	public static void main(String[] args){
+	public static void main(String[] args) throws IOException{
 		Main T = new Main();
 		Scanner kb = new Scanner(System.in);
-		String a=kb.next();
-		String b=kb.next();
-		System.out.println(T.solution(a, b));
+		int n=kb.nextInt();
+		int m=kb.nextInt();
+		int[] arr = new int[n];
+		for(int i=0; i<n; i++){
+			arr[i]=kb.nextInt();
+		}
+		System.out.println(T.solution(n, m, arr));	
 	}
 }
