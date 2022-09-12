@@ -3,29 +3,31 @@ import java.util.Queue;
 import java.util.Scanner;
 
 class Main {
-	public int solution(int n, int k){
-		int answer = 0;
-		Queue<Integer> queue = new LinkedList<>();
+	public String solution(String need, String plan){
+		String answer = "NO";
+		Queue<Character> queue = new LinkedList<>();
 		
-		for(int i=1; i<=n; i++) {
-			queue.add(i);
+		for(int i=0; i<need.length(); i++) {
+			queue.add(need.charAt(i));
 		}
-		for(int i=0; i<n-1; i++) {
-			for(int j =0; j<k-1; j++) {
-				int number = queue.remove();
-				queue.add(number);
+		for(int i=0; i<plan.length(); i++) {
+			
+			if(queue.peek() != null && plan.charAt(i) == queue.peek()){
+				queue.remove();
 			}
-			queue.remove();
 		}
-		answer = queue.peek();
+		if(queue.poll() == null) {
+			answer = "YES";
+		}
+		
 		return answer;
 	}
 
 	public static void main(String[] args){
 		Main T = new Main();
 		Scanner kb = new Scanner(System.in);
-		int n=kb.nextInt();
-		int k=kb.nextInt();
-		System.out.println(T.solution(n, k));
+		String a=kb.next();
+		String b=kb.next();
+		System.out.println(T.solution(a, b));
 	}
 }
